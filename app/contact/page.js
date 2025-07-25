@@ -50,15 +50,15 @@ const Contact = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              We'd Love to{" "}
+              {"We'd Love to"}
               <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Hear From You
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
-              Have questions, feedback, or need support? We're here to help. 
-              Reach out to us anytime, and we'll get back to you as soon as possible.
+             {" Have questions, feedback, or need support? We're here to help."} 
+              {"Reach out to us anytime, and we'll get back to you as soon as possible."}
             </p>
           </div>
         </div>
@@ -222,7 +222,7 @@ const Contact = () => {
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
                     <p className="text-gray-600 mb-6">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
+                      T{"hank you for reaching out. We'll get back to you within 24 hours."}
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
@@ -238,11 +238,10 @@ const Contact = () => {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                    Let's Connect
+                    {"Let's Connect"}
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    We're always excited to hear from our users. Whether you have questions, 
-                    feedback, or just want to say hello, don't hesitate to reach out.
+                    {"We're always excited to hear from our users. Whether you have questions,feedback, or just want to say hello, don't hesitate to reach out."} 
                   </p>
                 </div>
 
@@ -307,7 +306,7 @@ const Contact = () => {
               Need to Shorten a URL Right Now?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Don't wait! Start shortening your URLs instantly with BitLinks
+              {"Don't wait! Start shortening your URLs instantly with BitLinks"}
             </p>
             <Link href="/shorten">
               <button className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">

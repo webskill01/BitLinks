@@ -55,9 +55,7 @@ const About = () => {
                 surveillance tool.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                We don't track your clicks, we don't require registration, and
-                we don't bombard you with ads. Just pure, straightforward URL
-                shortening that works exactly as it should.
+                {"We don't track your clicks, we don't require registration, and we don't bombard you with ads. Just pure, straightforward URL shortening that works exactly as it should."}
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -207,7 +205,7 @@ const About = () => {
               Why Choose BitLinks?
             </h2>
             <p className="text-lg text-gray-600">
-              We've built the URL shortener we always wanted to use ourselves
+              {"We've built the URL shortener we always wanted to use ourselves"}
             </p>
           </div>
 
@@ -232,8 +230,8 @@ const About = () => {
                 No Data Collection
               </h3>
               <p className="text-gray-600">
-                We don't store, track, or analyze your personal information.
-                Your privacy is paramount.
+               {" We don't store, track, or analyze your personal information."}
+                {"Your privacy is paramount."}
               </p>
             </div>
 
