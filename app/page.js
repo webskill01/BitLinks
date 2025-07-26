@@ -57,7 +57,7 @@ export default function Home() {
                 </button>
               </Link>
               
-              <Link href="/github">
+              <Link href="https://github.com/webskill01" target="_blank">
                 <button className="group cursor-pointer w-full sm:w-auto bg-white hover:bg-gray-50 text-gray-800 font-semibold px-8 py-4 rounded-xl border-2 border-gray-200 hover:border-purple-300 shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 ease-out">
                   <span className="flex items-center justify-center gap-2">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

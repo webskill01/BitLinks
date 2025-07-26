@@ -412,7 +412,7 @@ const About = () => {
                   Start Shortening
                 </button>
               </Link>
-              <Link href="/github">
+              <Link href="https://github.com/webskill01" target="_blank">
                 <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300">
                   View Source Code
                 </button>
