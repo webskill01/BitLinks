@@ -8,6 +8,17 @@ const Shorten = () => {
   const [generated, setGenerated] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [error, setError] = useState('');
+
+
+  const validateUrl = (value) => {
+    if (!value.trim()) {
+      setError('URL is required');
+      return false;
+    }
+    setError('');
+    return true;
+  };
 
   const generate = () => {
     setIsLoading(true);
@@ -35,7 +46,7 @@ const Shorten = () => {
         console.log(result);
         // Replace alert with a better notification system
         if (result.message) {
-          // You can implement a toast notification here
+          alert("Your url generated successfully . Scroll down")
           console.log(result.message);
         }
       })
@@ -91,17 +102,18 @@ const Shorten = () => {
               <div className="relative">
                 <input
                   id="url"
-                  className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500"
+                  required
+                  className={`w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500 ${error ? 'border-red-500' : 'border-gray-200'}`}
                   type="text"
                   placeholder="https://example.com/your-very-long-url-here"
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  onChange={(e) => {
+                    setUrl(e.target.value);
+                    if (error) validateUrl(e.target.value); 
+                  }}
+                  onBlur={(e) => validateUrl(e.target.value)}
                 />
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                </div>
+                {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
             </div>
 
@@ -110,26 +122,32 @@ const Shorten = () => {
               <label htmlFor="shorturl" className="block text-sm font-semibold text-gray-700 mb-2">
                 Custom Short URL 
               </label>
-              <div className="flex items-center flex-col gap-2  sm:flex-row sm:gap-0 ">
+              <div className="flex items-center flex-col sm:flex-row sm: ">
                 <span className="bg-gray-100 text-gray-600 px-4 sm:px-4 py-4 rounded-xl border-2 border-gray-200 text-sm font-medium">
                   {process.env.NEXT_PUBLIC_HOST || 'bitlinks.com'}/
                 </span>
+                <span className="md:hidden">+</span>
                 <input
                   id="shorturl"
-                  className="flex-1 py-4 bg-gray-50 border-2 ms-0.5  border-gray-200 rounded-xl focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500 text-center sm:text-start px-4 w-full sm:px-4"
+                  className={`flex-1 py-4 bg-gray-50 border-2 ms-0.5  border-gray-200 rounded-xl focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500 text-center sm:text-start px-4 w-full sm:px-4 ${error ? 'border-red-500' : 'border-gray-200'}`}
                   type="text"
+                  required
                   placeholder="my-custom-link"
                   value={shortenurl}
-                  onChange={(e) => setShortenurl(e.target.value)}
+                  onChange={(e) => {setShortenurl(e.target.value) 
+                  if (error) validateUrl(e.target.value); 
+                }}
+                onBlur={(e) => validateUrl(e.target.value)}
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-1">Leave empty for auto-generated short URL</p>
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+              <p className="text-xs text-gray-500 mt-1">Enter Your Cusotm Short URL </p>
             </div>
 
             {/* Generate Button */}
             <button
               onClick={generate}
-              disabled={!url || isLoading}
+              disabled={!url || !shortenurl || isLoading }
               className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:hover:transform-none disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
             >
               {isLoading ? (
